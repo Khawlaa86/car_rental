@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Edit Car</h1>
+    <form method="post" action="/admin/update_car/{{ car.id }}">
+        <label for="brand">Brand:</label>
+        <input type="text" name="brand" value="{{ car.brand }}" required><br><br>
+        <label for="model">Model:</label>
+        <input type="text" name="model" value="{{ car.model }}" required><br><br>
+        <label for="space">Space:</label>
+        <input type="text" name="space" value="{{ car.space }}"><br><br>
+        <label for="speed">Speed:</label>
+        <input type="text" name="speed" value="{{ car.speed }}"><br><br>
+        <label for="color">Color:</label>
+        <input type="text" name="color" value="{{ car.color }}"><br><br>
+        <label for="image">Image:</label>
+        <input type="text" name="image" value="{{ car.image }}"><br><br>
+        <label for="price">Price:</label>
+        <input type="number" name="price" value="{{ car.price }}" required><br><br>
+        <button type="submit">Update Car</button>
+    </form>
+{% endblock %}

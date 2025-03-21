@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>My Reservations</h1>
+    {% if reservations %}
+        <ul>
+            {% for reservation in reservations %}
+                <li>
+                    {{ reservation.brand }} {{ reservation.model }} - Start: {{ reservation.start_date }}, End: {{ reservation.end_date }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>You have no reservations.</p>
+    {% endif %}
+{% endblock %}

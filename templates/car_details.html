@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="car-details">
+        <img src="{{ url_for('static', filename='images/' + car.image) }}" alt="{{ car.brand }} {{ car.model }}">
+        <h1>{{ car.brand }} {{ car.model }}</h1>
+        <p>Space: {{ car.space }}</p>
+        <p>Speed: {{ car.speed }}</p>
+        <p>Color: {{ car.color }}</p>
+        <p>Price: ${{ car.price }}/day</p>
+
+        {% if car.available == 1 %}
+            {% if session.user_id %}
+                <form method="post" action="/car/{{ car.id }}/reserve">
+                    <label for="start_date">Start Date:</label>
+                    <input type="date" name="start_date" required><br><br>
+                    <label for="end_date">End Date:</label>
+                    <input type="date" name="end_date" required><br><br>
+                    <button type="submit">Reserve</button>
+                </form>
+            {% else %}
+                <p><a href="/login">Login</a> to reserve this car.</p>
+            {% endif %}
+        {% else %}
+            <p>This car is currently unavailable.</p>
+        {% endif %}
+    </div>
+{% endblock %}

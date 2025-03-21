@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Admin Dashboard</h1>
+
+    <h2>Add Car</h2>
+    <form method="post" action="/admin/add_car">
+        <label for="brand">Brand:</label>
+        <input type="text" name="brand" required><br><br>
+        <label for="model">Model:</label>
+        <input type="text" name="model" required><br><br>
+        <label for="space">Space:</label>
+        <input type="text" name="space"><br><br>
+        <label for="speed">Speed:</label>
+        <input type="text" name="speed"><br><br>
+        <label for="color">Color:</label>
+        <input type="text" name="color"><br><br>
+        <label for="image">Image:</label>
+        <input type="text" name="image"><br><br>
+        <label for="price">Price:</label>
+        <input type="number" name="price" required><br><br>
+        <button type="submit">Add Car</button>
+    </form>
+
+    <h2>Car List</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>Available</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for car in cars %}
+                <tr>
+                    <td>{{ car.brand }}</td>
+                    <td>{{ car.model }}</td>
+                    <td>{{ "Yes" if car.available else "No" }}</td>
+                    <td>
+                        <a href="/admin/edit_car/{{ car.id }}">Edit</a>
+                        <a href="/admin/delete_car/{{ car.id }}" onclick="return confirm('Are you sure?')">Delete</a>
+                        <a href="/admin/toggle_availability/{{ car.id }}">Toggle Availability</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
