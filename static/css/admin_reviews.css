@@ -1,0 +1,76 @@
+/* CSS for admin_reviews.html */
+/* Add your styles here */
+/* admin_reviews.css */
+
+.reviews-container {
+    margin: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.reviews-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.reviews-table th, .reviews-table td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+.reviews-table th {
+    background-color: #007BFF;
+    color: #fff;
+}
+
+.reviews-table td {
+    background-color: #f9f9f9;
+}
+
+.reviews-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.reviews-table a {
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.edit-btn {
+    background-color: #ffc107;
+    color: #fff;
+    margin-right: 10px;
+}
+
+.edit-btn:hover {
+    background-color: #e0a800;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+}
+
+.pagination {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.pagination a {
+    margin: 0 10px;
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.pagination a:hover {
+    text-decoration: underline;
+}

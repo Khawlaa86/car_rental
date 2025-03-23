@@ -1,44 +1,40 @@
+/* style.css */
+
+/* Basic page styling */
 body {
-    font-family: sans-serif;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
     margin: 0;
     padding: 0;
 }
 
 header {
     background-color: #333;
-    color: #fff;
     padding: 10px;
 }
 
-nav a {
-    color: #fff;
+header nav a {
+    color: white;
+    margin-right: 20px;
     text-decoration: none;
-    margin-right: 10px;
 }
 
-.main {
-  padding: 20px;
+header nav a:hover {
+    text-decoration: underline;
 }
 
-.cars {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.car {
-    border: 1px solid #ddd;
-    margin: 10px;
-    padding: 10px;
-    width: 200px;
-}
-
-.car img {
-    max-width: 100%;
-    height: auto;
+main {
+    padding: 20px;
+    background-color: white;
+    margin-top: 20px;
 }
 
 footer {
-    background-color: #eee;
+    background-color: #333;
+    color: white;
     padding: 10px;
     text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }

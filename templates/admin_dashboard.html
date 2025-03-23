@@ -1,50 +1,114 @@
-{% extends "base.html" %}
+{% extends "base_admin.html" %}
 
 {% block content %}
-    <h1>Admin Dashboard</h1>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin_dashboard.css') }}">
 
-    <h2>Add Car</h2>
-    <form method="post" action="/admin/add_car">
-        <label for="brand">Brand:</label>
-        <input type="text" name="brand" required><br><br>
-        <label for="model">Model:</label>
-        <input type="text" name="model" required><br><br>
-        <label for="space">Space:</label>
-        <input type="text" name="space"><br><br>
-        <label for="speed">Speed:</label>
-        <input type="text" name="speed"><br><br>
-        <label for="color">Color:</label>
-        <input type="text" name="color"><br><br>
-        <label for="image">Image:</label>
-        <input type="text" name="image"><br><br>
-        <label for="price">Price:</label>
-        <input type="number" name="price" required><br><br>
-        <button type="submit">Add Car</button>
-    </form>
+    <h1 class="admin-title">Admin Dashboard</h1>
 
-    <h2>Car List</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Brand</th>
-                <th>Model</th>
-                <th>Available</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for car in cars %}
+    <!-- Add Car Form -->
+    <div class="form-container">
+        <h2 class="form-title">Add Car</h2>
+        <form method="post" action="/admin/add_car">
+            <div class="form-group">
+                <label for="brand">Brand:</label>
+                <input type="text" name="brand" required>
+            </div>
+
+            <div class="form-group">
+                <label for="model">Model:</label>
+                <input type="text" name="model" required>
+            </div>
+
+            <div class="form-group">
+                <label for="space">Space:</label>
+                <input type="text" name="space">
+            </div>
+
+            <div class="form-group">
+                <label for="speed">Speed:</label>
+                <input type="text" name="speed">
+            </div>
+
+            <div class="form-group">
+                <label for="color">Color:</label>
+                <input type="text" name="color">
+            </div>
+
+            <div class="form-group">
+                <label for="image">Image URL:</label>
+                <input type="text" name="image">
+            </div>
+
+            <div class="form-group">
+                <label for="price">Price ($/day):</label>
+                <input type="number" name="price" required>
+            </div>
+
+            <button type="submit" class="btn">Add Car</button>
+        </form>
+    </div>
+
+    <!-- Car List -->
+    <div class="car-list-container">
+        <h2 class="car-list-title">Car List</h2>
+        <table class="car-table">
+            <thead>
                 <tr>
-                    <td>{{ car.brand }}</td>
-                    <td>{{ car.model }}</td>
-                    <td>{{ "Yes" if car.available else "No" }}</td>
-                    <td>
-                        <a href="/admin/edit_car/{{ car.id }}">Edit</a>
-                        <a href="/admin/delete_car/{{ car.id }}" onclick="return confirm('Are you sure?')">Delete</a>
-                        <a href="/admin/toggle_availability/{{ car.id }}">Toggle Availability</a>
-                    </td>
+                    <th>Brand</th>
+                    <th>Model</th>
+                    <th>Available</th>
+                    <th>Actions</th>
                 </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                {% for car in cars %}
+                    <tr>
+                        <td>{{ car.brand }}</td>
+                        <td>{{ car.model }}</td>
+                        <td class="{% if car.available %}available{% else %}not-available{% endif %}">
+                            {{ "Yes" if car.available else "No" }}
+                        </td>
+                        <td>
+                            <a href="/admin/edit_car/{{ car.id }}" class="btn-action edit">Edit</a>
+                            <a href="/admin/delete_car/{{ car.id }}" onclick="return confirm('Are you sure?')" class="btn-action delete">Delete</a>
+                            <a href="/admin/toggle_availability/{{ car.id }}" class="btn-action toggle">
+                                {% if car.available %}Make Unavailable{% else %}Make Available{% endif %}
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Reservation Management -->
+    <div class="reservations-container">
+        <h2 class="reservations-title">User Reservations</h2>
+        {% if reservations %}
+            <table class="reservations-table">
+                <thead>
+                    <tr>
+                        <th>User</th>
+                        <th>Car</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for reservation in reservations %}
+                        <tr>
+                            <td>{{ reservation.user_name }}</td>
+                            <td>{{ reservation.car_brand }} {{ reservation.car_model }}</td>
+                            <td>{{ reservation.start_date }}</td>
+                            <td>{{ reservation.end_date }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p class="no-reservations">No reservations found.</p>
+        {% endif %}
+    </div>
+
+    <script src="{{ url_for('static', filename='js/admin_dashboard.js') }}"></script>
 {% endblock %}

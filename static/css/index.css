@@ -1,0 +1,81 @@
+/* CSS for index.html */
+/* Add your styles here */
+/* index.css */
+
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.cars-section {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cars-section h1 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #333;
+    margin-bottom: 40px;
+}
+
+.cars {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 0;
+}
+
+.car {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.car:hover {
+    transform: scale(1.05);
+}
+
+.car-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 2px solid #ddd;
+}
+
+.car-info {
+    padding: 15px;
+}
+
+.car-info h2 {
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+}
+
+.car-info p {
+    font-size: 1rem;
+    margin: 5px 0;
+}
+
+.view-details {
+    display: inline-block;
+    background-color: #007BFF;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+.view-details:hover {
+    background-color: #0056b3;
+}

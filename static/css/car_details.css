@@ -1,0 +1,116 @@
+/* CSS for car_details.html */
+/* Add your styles here */
+/* car_details.css */
+
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.car-details {
+    max-width: 800px;
+    margin: 40px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.car-image img {
+    width: 100%;
+    max-width: 600px;
+    border-radius: 8px;
+    margin: 0 auto;
+    display: block;
+}
+
+.car-title {
+    text-align: center;
+    font-size: 2rem;
+    color: #333;
+    margin: 20px 0;
+}
+
+.car-description {
+    font-size: 1.2rem;
+    color: #555;
+    margin: 10px 0;
+}
+
+.car-price {
+    font-size: 1.5rem;
+    color: #28a745;
+    font-weight: bold;
+    margin: 20px 0;
+}
+
+.reserve-form {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+.reserve-form .form-group {
+    margin-bottom: 15px;
+}
+
+.reserve-form .form-group label {
+    font-weight: bold;
+    color: #555;
+}
+
+.reserve-form .form-group input {
+    width: 100%;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+
+.reserve-form .form-group input:focus {
+    border-color: #007BFF;
+    outline: none;
+}
+
+.btn-reserve {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1rem;
+}
+
+.btn-reserve:hover {
+    background-color: #0056b3;
+}
+
+.login-prompt {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 1.2rem;
+}
+
+.login-prompt a {
+    color: #007BFF;
+    text-decoration: none;
+}
+
+.login-prompt a:hover {
+    text-decoration: underline;
+}
+
+.unavailable {
+    font-size: 1.2rem;
+    color: #dc3545;
+    text-align: center;
+    margin-top: 20px;
+}

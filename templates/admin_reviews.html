@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/admin_reviews.css') }}">
+
+    <h1>Customer Reviews</h1>
+
+    <div class="reviews-container">
+        <table class="reviews-table">
+            <thead>
+                <tr>
+                    <th>Customer</th>
+                    <th>Car</th>
+                    <th>Rating</th>
+                    <th>Review</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for review in reviews %}
+                    <tr>
+                        <td>{{ review.customer_name }}</td>
+                        <td>{{ review.car_brand }} {{ review.car_model }}</td>
+                        <td>{{ review.rating }} / 5</td>
+                        <td>{{ review.text }}</td>
+                        <td>
+                            <a href="/admin/edit_review/{{ review.id }}" class="edit-btn">Edit</a>
+                            <a href="/admin/delete_review/{{ review.id }}" class="delete-btn" onclick="return confirm('Are you sure?')">Delete</a>
+                        </td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="5">No reviews available.</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="pagination">
+        {% if reviews.has_prev %}
+            <a href="{{ url_for('admin_reviews', page=reviews.prev_num) }}">Previous</a>
+        {% endif %}
+        <span>Page {{ reviews.page }} of {{ reviews.pages }}</span>
+        {% if reviews.has_next %}
+            <a href="{{ url_for('admin_reviews', page=reviews.next_num) }}">Next</a>
+        {% endif %}
+    </div>
+
+{% endblock %}

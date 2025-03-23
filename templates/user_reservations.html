@@ -1,16 +1,25 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>My Reservations</h1>
-    {% if reservations %}
-        <ul>
-            {% for reservation in reservations %}
-                <li>
-                    {{ reservation.brand }} {{ reservation.model }} - Start: {{ reservation.start_date }}, End: {{ reservation.end_date }}
-                </li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>You have no reservations.</p>
-    {% endif %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/user_reservations.css') }}">
+
+    <div class="reservations-container">
+        <h1>My Reservations</h1>
+        {% if reservations %}
+            <ul class="reservations-list">
+                {% for reservation in reservations %}
+                    <li class="reservation-item">
+                        <div class="reservation-details">
+                            <h2>{{ reservation.brand }} {{ reservation.model }}</h2>
+                            <p>Start Date: {{ reservation.start_date }}</p>
+                            <p>End Date: {{ reservation.end_date }}</p>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p class="no-reservations">You have no reservations.</p>
+        {% endif %}
+    </div>
+    <script src="{{ url_for('static', filename='js/reservations.js') }}"></script>
 {% endblock %}

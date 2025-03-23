@@ -1,18 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Car Rental</title>
+
+    <!-- Stylesheets -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/user_reservations.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/car_details.css') }}">
+    
+    {% if session.is_admin %}
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/admin_dashboard.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/admin_reviews.css') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/edit_car.css') }}">
+    {% endif %}
 </head>
+
 <body>
     <header>
         <nav>
             <a href="/">Home</a>
             {% if session.user_id %}
                 {% if session.is_admin %}
-                    <a href="/admin">Admin Dashboard</a>
+                    <a href="/admin_dashboard">Admin Dashboard</a>
+                    <a href="/admin/reservations">Reservations</a>
                 {% else %}
                     <a href="/reservations">My Reservations</a>
                 {% endif %}
@@ -20,6 +36,7 @@
             {% else %}
                 <a href="/login">Login</a>
                 <a href="/register">Register</a>
+                <a href="/admin_login" class="admin-btn">Admin</a>
             {% endif %}
         </nav>
     </header>
@@ -32,6 +49,19 @@
         <p>&copy; 2024 Car Rental</p>
     </footer>
 
+    <!-- JavaScript -->
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/login.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/register.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/reservations.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/car_details.js') }}"></script>
+    
+    {% if session.is_admin %}
+        <script src="{{ url_for('static', filename='js/admin_dashboard.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/admin_reviews.js') }}"></script>
+        <script src="{{ url_for('static', filename='js/edit_car.js') }}"></script>
+    {% endif %}
 </body>
+
 </html>
